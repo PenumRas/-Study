@@ -9,7 +9,7 @@ def total_salary(path):
                 name, sallary = line.split(",")
                 names.append(name.strip())
                 sallaries.append(int(sallary.strip()))
-            total_salary: int = 0
+            total_salary  = 0
 
             for el in sallaries:
                 total_salary += el
