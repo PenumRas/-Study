@@ -1,4 +1,5 @@
 telephone_book = {}
+help_command = "exit", "hi", "add"
 def parse_input(command):
     key_word = []   #назва команди з рядку введення(1 слово)
     value_mod = []  #все що треба зробити\зберегти командою(2 і наст слова)
@@ -29,6 +30,10 @@ def command_add(command):
             print("Try to write command {'add'} and then {'name'} and {'Phone number'} ")
             return None
     return False
+
+def command_help(command):
+    if command == ("help"):
+        print(f"for exit print some word{help_command} ")
 def main():
     print("Hello, I am personal assistant ")
     while True:
@@ -43,8 +48,10 @@ def main():
                 print(f"Updated Phone_book is {telephone_book}")
             if result is None:
                 continue
-            else:
-                print("If Y dont know what I can - print 'Help'")
+        elif command == "help":
+            print(command_help(command))
+        else:
+            print("If Y dont know what I can - print 'Help'")
 
 
 
