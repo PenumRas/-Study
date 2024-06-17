@@ -11,8 +11,6 @@ def get_cats_info(path):
                     "age": age.strip()
                 }
                 cat_info.append(cats)
-                # cat_name.append(name.strip())
-                # cat_age.append(age.strip())
         return cat_info
     except FileNotFoundError:
         print(f"file at path{path} not found")
