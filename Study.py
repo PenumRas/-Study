@@ -64,6 +64,7 @@ def main():
     while True:
         command = input("command and values: ")
         if command_exit(command):
+            print("GoodBye!")
             break
 
         elif command_greeting(command):
