@@ -5,7 +5,7 @@ def parse_input(command):
     if " " in command:
         key_word, value_mod = command.split(" ", 1)
     else:
-        return  command
+        return  command, None
     return key_word, value_mod
 
 def command_exit(command):
@@ -19,18 +19,16 @@ def command_greeting(command):
         return True
 
 def command_add(command):
-    try:
-        key_word, value_mod = parse_input(command)
-        if key_word.lower() == ('add'):
+    key_word, value_mod = parse_input(command)
+    if key_word.lower() == ('add') in key_word:
+        try:
             name, telephone = value_mod.split(" ", 1)
-            telephone_book = {
-                "name": name,
-                "telephone": telephone
-            }
+            telephone_book[name] = telephone
             return  telephone_book
-        return True
-    except ValueError:
-        print("Try to write command {'add'} and then {'name'} and {'Phone number'} ")
+        except (ValueError, AttributeError):
+            print("Try to write command {'add'} and then {'name'} and {'Phone number'} ")
+            return None
+    return False
 def main():
     print("Hello, I am personal assistant ")
     while True:
@@ -40,10 +38,13 @@ def main():
         elif command_greeting(command):
             print("Hi, what You want to do?")
         elif command_add(command):
-            telephone_book=command_add(command)
-            print(telephone_book)
-        else:
-            print("If Y dont know what I can - print 'Help'")
+            result = command_add(command)
+            if result:
+                print(f"Updated Phone_book is {telephone_book}")
+            if result is None:
+                continue
+            else:
+                print("If Y dont know what I can - print 'Help'")
 
 
 
