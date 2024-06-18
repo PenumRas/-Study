@@ -78,7 +78,6 @@ def main():
         elif command == "phone":
             print(command_phone_by_username(args, telephone_book))
 
-
         elif command == "all":
             print(f"List of Nanes and Numbers{telephone_book}")
 
