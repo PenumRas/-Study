@@ -1,7 +1,6 @@
 telephone_book = {}
 
 
-
 def parse_input(command):
     if " " in command:
         key_word, *args = command.split(" ", 1)
