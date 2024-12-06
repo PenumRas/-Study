@@ -1,25 +1,24 @@
-def total_salary(path):
+def get_cats_info(path):
     try:
-        with open(path, "r", encoding="UTF-8") as fh:
+        with open(path, "r") as fh:
             lines = [el.strip() for el in fh.readlines()]
-            names = []
-            sallaries = []
-
+            cat_info = []
             for line in lines:
-                name, sallary = line.split(",")
-                names.append(name.strip())
-                sallaries.append(int(sallary.strip()))
-            total_salary  = 0
+                id, name, age = line.split(",")
+                cats = {
+                    "id": id.strip(),
+                    "name": name.strip(),
+                    "age": age.strip()
+                }
+                cat_info.append(cats)
+        return cat_info
+    except FileNotFoundError:
+        print(f"file at path{path} not found")
+        return []
+    except IOError:
+        print(f"some error in read path{path}")
+        return []
 
-            for el in sallaries:
-                total_salary += el
-            average = total_salary / len(sallaries)
 
-            return total_salary, average
-
-    except (IndentationError, FileNotFoundError, TypeError):
-        print("Try to use correct path or Name")
-
-
-total, average = total_salary("Salary.txt")
-print(f"Занальна сума заробітної плати: {total}, Середня заробітня плата:{average}")
+cats_info = get_cats_info("cats_file.txt")
+print(cats_info)
